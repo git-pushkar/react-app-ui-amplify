@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react';
+import axios from 'axios';
+class App extends Component {
+  componentDidMount() {
+    const api = 'https://0vlxd0lfec.execute-api.ap-south-1.amazonaws.com/dev';
+    const data = { 'name' : 'Pushkar' };
+    axios
+      .post(api, data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+  render() {
+    return (
+      <div>Simple React App</div>
+    );
+  }
 }
-
 export default App;
